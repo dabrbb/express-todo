@@ -25,3 +25,6 @@ export interface Task {
  * and should not be provided or modified by the client.
  */
 export type TaskInput = Omit<Task, 'id' | 'createdAt'>;
+
+// Types for middlware
+export type RequestSegment = 'body' | 'query' | 'params';
