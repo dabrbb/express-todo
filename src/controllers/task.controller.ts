@@ -2,7 +2,7 @@ import { createTaskSchema, getTaskQuerySchema } from "../schemas/task.schema";
 import { Request, Response } from "express";
 import { taskService } from "../services/task.service";
 
-export class TaskController {
+class TaskController {
     public getAllTasks(req: Request, res: Response) {
         const result = getTaskQuerySchema.safeParse(req.query);
 
@@ -85,3 +85,5 @@ export class TaskController {
         return res.status(204).send();
     }
 }
+
+export const taskController = new TaskController();

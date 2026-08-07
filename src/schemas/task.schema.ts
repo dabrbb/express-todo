@@ -4,8 +4,8 @@ import { TaskPriority, TaskStatus } from '../types/task.type';
 export const createTaskSchema = z.object({
     title: z.string().min(3, 'Como minimo tres caracteres'),
     description: z.string().optional(),
-    status: z.nativeEnum(TaskStatus).optional(),
-    priority: z.nativeEnum(TaskPriority).optional(),
+    status: z.nativeEnum(TaskStatus).default(TaskStatus.TODO),
+    priority: z.nativeEnum(TaskPriority).default(TaskPriority.MEDIUM),
 });
 
 export const getTaskQuerySchema = z.object({
