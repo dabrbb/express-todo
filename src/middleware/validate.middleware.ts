@@ -13,7 +13,12 @@ export const validate = (schema: ZodSchema, target: RequestSegment = 'body') => 
             });
         }
 
-        req[target] = validation.data;
+        if (target === 'query') {
+            Object.keys(req.query).forEach(key => delete (req.query as Record<string, unknown>)[key]);
+            Object.assign(req.query, validation.data);
+        } else {
+            req[target] = validation.data;
+        }
 
         next();
     };
